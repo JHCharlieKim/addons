@@ -18,7 +18,7 @@ import paho.mqtt.client as mqtt
 from paho.mqtt.enums import CallbackAPIVersion
 
 # Version
-SW_VERSION = 'RS485 Compilation 1.0.3b'
+SW_VERSION = 'RS485 Compilation 2.0.0'
 # Log Level
 CONF_LOGLEVEL = 'info' # debug, info, warn
 
@@ -1118,7 +1118,7 @@ class Grex:
         _t5.start()
 
     def connect_mqtt(self, server, name):
-        mqtt_client = mqtt.Client()
+        mqtt_client = mqtt.Client(CallbackAPIVersion.VERSION2)
         mqtt_client.on_message = self.on_message
         #mqtt_client.on_publish = self.on_publish
         mqtt_client.on_subscribe = self.on_subscribe
