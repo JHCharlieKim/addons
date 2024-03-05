@@ -1,6 +1,6 @@
 {
   "name": "My Wallpad Controller with RS485",
-  "version": "2.0.0e",
+  "version": "2.0.0f",
   "slug": "kocom_wallpad",
   "description": "Kocom Wallpad Controller for Homeassistant",
   "arch": [

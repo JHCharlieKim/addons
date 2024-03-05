@@ -519,7 +519,7 @@ class Kocom(rs485):
         logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
-        if reason_code.is_failure():
+        if reason_code.is_failure:
             logger.info('Connection refused')
             return
 
@@ -1153,7 +1153,7 @@ class Grex:
         logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
-        if reason_code.is_failure():
+        if reason_code.is_failure:
             logger.info('Connection refused')
             return
 
