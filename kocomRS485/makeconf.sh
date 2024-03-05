@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CONFIG_FILE=/data/options.json
 CONFIG_RS485=/share/kocom/rs485.conf

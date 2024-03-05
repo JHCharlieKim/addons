@@ -8,7 +8,6 @@ import os.path
 import serial
 import socket
 import time
-import platform
 import threading
 import json
 import logging
@@ -16,7 +15,7 @@ import logging.config
 import logging.handlers
 import configparser
 import paho.mqtt.client as mqtt
-from collections import OrderedDict
+from paho.mqtt.enums import CallbackAPIVersion
 
 # Version
 SW_VERSION = 'RS485 Compilation 1.0.3b'
@@ -369,7 +368,7 @@ class Kocom(rs485):
             logging.info('[Serial Write] Connection Error')
 
     def connect_mqtt(self, server, name):
-        mqtt_client = mqtt.Client()
+        mqtt_client = mqtt.Client(CallbackAPIVersion.VERSION2)
         mqtt_client.on_message = self.on_message
         #mqtt_client.on_publish = self.on_publish
         mqtt_client.on_subscribe = self.on_subscribe
