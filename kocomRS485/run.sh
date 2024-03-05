@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SHARE_DIR=/share/kocom
-VERSION=2.0.0d
+VERSION=2.0.0e
 
 mkdir -p $SHARE_DIR
 mv /rs485-${VERSION}.py $SHARE_DIR

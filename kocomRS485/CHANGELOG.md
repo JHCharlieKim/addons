@@ -1,11 +1,14 @@
 RS485 Compilation
 =================
-Version : 2.0.0d
+Version : 2.0.0e
 ----------------
 
 ## 패치노트
-### Ver 2.0.0d
-> Fork 후 동작하도록 수정
+### Ver 2.0.0e
+> - 버전 대응
+>   - Python 3.12.2
+>   - pyserial 3.4
+>   - paho-mqtt 2.0.0
 ### Ver 1.0.7
 > 애드온 에러 수정: 알파인에서 python3만 사용해야 함. python 관련 제거
 ### Ver 1.0.2b

@@ -519,21 +519,12 @@ class Kocom(rs485):
         logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
-        if int(reason_code) == 0:
-            logger.info("[MQTT] connected OK")
-            self.homeassistant_device_discovery(initial=True)
-        elif int(reason_code) == 1:
-            logger.info("[MQTT] 1: Connection refused – incorrect protocol version")
-        elif int(reason_code) == 2:
-            logger.info("[MQTT] 2: Connection refused – invalid client identifier")
-        elif int(reason_code) == 3:
-            logger.info("[MQTT] 3: Connection refused – server unavailable")
-        elif int(reason_code) == 4:
-            logger.info("[MQTT] 4: Connection refused – bad username or password")
-        elif int(reason_code) == 5:
-            logger.info("[MQTT] 5: Connection refused – not authorised")
-        else:
-            logger.info("[MQTT] {} : Connection refused".format(reason_code))
+        if reason_code.is_failure():
+            logger.info('Connection refused')
+            return
+
+        logger.info('MQTT connected OK')
+        self.homeassistant_device_discovery(initial=True)
 
     def homeassistant_device_discovery(self, initial=False, remove=False):
         subscribe_list = []
@@ -1162,21 +1153,12 @@ class Grex:
         logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
-        if int(reason_code) == 0:
-            logger.info("MQTT connected OK")
-            self.homeassistant_device_discovery(initial=True)
-        elif int(reason_code) == 1:
-            logger.info("1: Connection refused – incorrect protocol version")
-        elif int(reason_code) == 2:
-            logger.info("2: Connection refused – invalid client identifier")
-        elif int(reason_code) == 3:
-            logger.info("3: Connection refused – server unavailable")
-        elif int(reason_code) == 4:
-            logger.info("4: Connection refused – bad username or password")
-        elif int(reason_code) == 5:
-            logger.info("5: Connection refused – not authorised")
-        else:
-            logger.info(reason_code, ": Connection refused")
+        if reason_code.is_failure():
+            logger.info('Connection refused')
+            return
+
+        logger.info('MQTT connected OK')
+        self.homeassistant_device_discovery(initial=True)
 
     def homeassistant_device_discovery(self, initial=False):
         subscribe_list = []
