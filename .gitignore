@@ -3,3 +3,4 @@
 .sass-cache
 .gist-cache
 .idea
+node_modules

@@ -7,6 +7,4 @@
 
 
 
-### Kocom Wallpad Controller with RS485 (kocomRS485)
-
- 랜이님이 만든 코콤 월패드 파이썬 프로그램을 애드온으로 포팅한 것입니다.
+### Universal Wallpad Controller with RS485 
