@@ -18,7 +18,7 @@ import paho.mqtt.client as mqtt
 from paho.mqtt.enums import CallbackAPIVersion
 
 # Version
-SW_VERSION = 'RS485 Compilation 2.0.0'
+SW_VERSION = 'RS485 Compilation 2.0.0a'
 # Log Level
 CONF_LOGLEVEL = 'info' # debug, info, warn
 

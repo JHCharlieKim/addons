@@ -1,6 +1,6 @@
 {
   "name": "My Wallpad Controller with RS485",
-  "version": "2.0.0",
+  "version": "2.0.0a",
   "slug": "kocom_wallpad",
   "description": "Kocom Wallpad Controller for Homeassistant",
   "arch": [
@@ -19,7 +19,7 @@
   ],
   "options": {
     "RS485": {
-      "type": "Serial"
+      "type": "Socket"
     },
     "Socket": {
       "server": "192.168.x.x",
@@ -41,12 +41,12 @@
       "password": "pw"
     },
     "Wallpad": {
-      "light": false,
+      "light": true,
       "plug": false,
-      "thermostat": false,
+      "thermostat": true,
       "fan": false,
-      "gas": false,
-      "elevator": false
+      "gas": true,
+      "elevator": true
     },
     "Advanced": {
       "INIT_TEMP": 22,
@@ -58,7 +58,7 @@
     "KOCOM_LIGHT_SIZE": [
       {
         "name": "livingroom",
-        "number": 3
+        "number": 2
       },
       {
         "name": "bedroom",
@@ -66,15 +66,11 @@
       },
       {
         "name": "room1",
-        "number": 2
+        "number": 1
       },
       {
         "name": "room2",
-        "number": 2
-      },
-      {
-        "name": "kitchen",
-        "number": 3
+        "number": 1
       }
     ],
     "KOCOM_PLUG_SIZE": [
@@ -93,18 +89,13 @@
       {
         "name": "room2",
         "number": 2
-      },
-      {
-        "name": "kitchen",
-        "number": 3
       }
     ],
     "KOCOM_ROOM": [
       "livingroom",
       "bedroom",
       "room1",
-      "room2",
-      "kitchen"
+      "room2"
     ],
     "KOCOM_ROOM_THERMOSTAT": [
       "livingroom",
