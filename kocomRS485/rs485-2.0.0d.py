@@ -518,22 +518,22 @@ class Kocom(rs485):
     def on_subscribe(self, client, obj, mid, granted_qos):
         logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
 
-    def on_connect(self, client, userdata, flags, rc):
-        if int(rc) == 0:
+    def on_connect(self, client, userdata, flags, reason_code, properties):
+        if int(reason_code) == 0:
             logger.info("[MQTT] connected OK")
             self.homeassistant_device_discovery(initial=True)
-        elif int(rc) == 1:
+        elif int(reason_code) == 1:
             logger.info("[MQTT] 1: Connection refused – incorrect protocol version")
-        elif int(rc) == 2:
+        elif int(reason_code) == 2:
             logger.info("[MQTT] 2: Connection refused – invalid client identifier")
-        elif int(rc) == 3:
+        elif int(reason_code) == 3:
             logger.info("[MQTT] 3: Connection refused – server unavailable")
-        elif int(rc) == 4:
+        elif int(reason_code) == 4:
             logger.info("[MQTT] 4: Connection refused – bad username or password")
-        elif int(rc) == 5:
+        elif int(reason_code) == 5:
             logger.info("[MQTT] 5: Connection refused – not authorised")
         else:
-            logger.info("[MQTT] {} : Connection refused".format(rc))
+            logger.info("[MQTT] {} : Connection refused".format(reason_code))
 
     def homeassistant_device_discovery(self, initial=False, remove=False):
         subscribe_list = []
@@ -1161,22 +1161,22 @@ class Grex:
     def on_subscribe(self, client, obj, mid, granted_qos):
         logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
 
-    def on_connect(self, client, userdata, flags, rc):
-        if int(rc) == 0:
+    def on_connect(self, client, userdata, flags, reason_code, properties):
+        if int(reason_code) == 0:
             logger.info("MQTT connected OK")
             self.homeassistant_device_discovery(initial=True)
-        elif int(rc) == 1:
+        elif int(reason_code) == 1:
             logger.info("1: Connection refused – incorrect protocol version")
-        elif int(rc) == 2:
+        elif int(reason_code) == 2:
             logger.info("2: Connection refused – invalid client identifier")
-        elif int(rc) == 3:
+        elif int(reason_code) == 3:
             logger.info("3: Connection refused – server unavailable")
-        elif int(rc) == 4:
+        elif int(reason_code) == 4:
             logger.info("4: Connection refused – bad username or password")
-        elif int(rc) == 5:
+        elif int(reason_code) == 5:
             logger.info("5: Connection refused – not authorised")
         else:
-            logger.info(rc, ": Connection refused")
+            logger.info(reason_code, ": Connection refused")
 
     def homeassistant_device_discovery(self, initial=False):
         subscribe_list = []
