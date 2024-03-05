@@ -5,7 +5,7 @@
 ## About
 랜이님이 만든 코콤 월패드 프로그램을 애드온으로 만든 것입니다.
 
-## Version : 2.0.0f
+## Version : 2.0.0g
 - 버전 대응
   - Python 3.12.2
   - pyserial 3.4

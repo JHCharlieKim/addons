@@ -515,8 +515,8 @@ class Kocom(rs485):
     def on_publish(self, client, obj, mid):
         logger.info("Publish: {}".format(str(mid)))
 
-    def on_subscribe(self, client, obj, mid, granted_qos):
-        logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
+    def on_subscribe(self, client, userdata, mid, reason_code_list, properties):
+        logger.info("Subscribed: {} {} {}".format(str(mid), str(reason_code_list), str(properties)))
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
         if reason_code.is_failure:
@@ -1149,8 +1149,8 @@ class Grex:
     def on_publish(self, client, obj, mid):
         logger.info("Publish: {}".format(str(mid)))
 
-    def on_subscribe(self, client, obj, mid, granted_qos):
-        logger.info("Subscribed: {} {}".format(str(mid),str(granted_qos)))
+    def on_subscribe(self, client, userdata, mid, reason_code_list, properties):
+        logger.info("Subscribed: {} {} {}".format(str(mid), str(reason_code_list), str(properties)))
 
     def on_connect(self, client, userdata, flags, reason_code, properties):
         if reason_code.is_failure:

@@ -1,10 +1,10 @@
 RS485 Compilation
 =================
-Version : 2.0.0f
+Version : 2.0.0g
 ----------------
 
 ## 패치노트
-### Ver 2.0.0f
+### Ver 2.0.0g
 > - 버전 대응
 >   - Python 3.12.2
 >   - pyserial 3.4
