@@ -1,0 +1,102 @@
+{
+  "model": "daelim",
+  "type": "socket",
+  "sendDelay": 150,
+  "serial": {
+    "port": "/dev/ttyUSB0",
+    "baudrate": 9600,
+    "parity": "none"
+  },
+  "socket": {
+    "deviceIP": "127.0.0.1",
+    "port": 8899
+  },
+  "mqtt": {
+    "server": "192.168.x.x",
+    "username": "id",
+    "password": "pw",
+    "receiveDelay": 10000
+  },
+  "light": [
+    {
+      "name": "거실",
+      "state_topic": "homenet/Light1/power/state",
+      "command_topic": "homenet/Light1/power/command"
+    },
+    {
+      "name": "복도",
+      "state_topic": "homenet/Light2/power/state",
+      "command_topic": "homenet/Light2/power/command"
+    },
+    {
+      "name": "침실1-1",
+      "state_topic": "homenet/Light4/power/state",
+      "command_topic": "homenet/Light4/power/command"
+    },
+    {
+      "name": "침실1-2",
+      "state_topic": "homenet/Light5/power/state",
+      "command_topic": "homenet/Light5/power/command"
+    },
+    {
+      "name": "침실2",
+      "state_topic": "homenet/Light6/power/state",
+      "command_topic": "homenet/Light6/power/command"
+    },
+    {
+      "name": "침실3",
+      "state_topic": "homenet/Light7/power/state",
+      "command_topic": "homenet/Light7/power/command"
+    }
+  ],
+  "climate": [
+    {
+      "name": "거실",
+      "mode_state_topic": "homenet/Thermo1/power/state",
+      "mode_command_topic": "homenet/Thermo1/power/command",
+      "temperature_state_topic": "homenet/Thermo1/setTemp/state",
+      "temperature_command_topic": "homenet/Thermo1/setTemp/command",
+      "current_temperature_topic": "homenet/Thermo1/curTemp/state",
+      "modes": ["off", "heat"],
+      "min_temp": 18,
+      "max_temp": 30,
+      "precision": 0.1
+    },
+    {
+      "name": "침실1",
+      "mode_state_topic": "homenet/Thermo2/power/state",
+      "mode_command_topic": "homenet/Thermo2/power/command",
+      "temperature_state_topic": "homenet/Thermo2/setTemp/state",
+      "temperature_command_topic": "homenet/Thermo2/setTemp/command",
+      "current_temperature_topic": "homenet/Thermo2/curTemp/state",
+      "modes": ["off", "heat"],
+      "min_temp": 18,
+      "max_temp": 30,
+      "precision": 0.1
+    },
+    {
+      "name": "침실2",
+      "mode_state_topic": "homenet/Thermo3/power/state",
+      "mode_command_topic": "homenet/Thermo3/power/command",
+      "temperature_state_topic": "homenet/Thermo3/setTemp/state",
+      "temperature_command_topic": "homenet/Thermo3/setTemp/command",
+      "current_temperature_topic": "homenet/Thermo3/curTemp/state",
+      "modes": ["off", "heat"],
+      "min_temp": 18,
+      "max_temp": 30,
+      "precision": 0.1
+    },
+    {
+      "name": "침실3",
+      "mode_state_topic": "homenet/Thermo4/power/state",
+      "mode_command_topic": "homenet/Thermo4/power/command",
+      "temperature_state_topic": "homenet/Thermo4/setTemp/state",
+      "temperature_command_topic": "homenet/Thermo4/setTemp/command",
+      "current_temperature_topic": "homenet/Thermo4/curTemp/state",
+      "modes": ["off", "heat"],
+      "min_temp": 18,
+      "max_temp": 30,
+      "precision": 0.1
+    }
+  ]
+}

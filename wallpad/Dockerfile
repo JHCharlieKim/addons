@@ -2,14 +2,18 @@ FROM node:18.15.0
 
 ENV LANG C.UTF-8
 
-WORKDIR /share
+WORKDIR /
+RUN apt-get update && \
+    apt-get install -y jq
 
-COPY run.sh .
-COPY daelim_socket.js .
-COPY package.json .
-
+COPY package.json /
 RUN npm install
 
-RUN chmod a+x ./run.sh
+COPY run.sh /
+COPY js /js
 
-CMD [ "./run.sh" ]
+WORKDIR /share
+
+RUN chmod a+x /run.sh
+
+CMD [ "/run.sh" ]

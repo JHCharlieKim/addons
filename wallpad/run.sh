@@ -17,7 +17,7 @@ else
 		if [ $? -eq 0 ]; then
 			rm $SHARE_DIR/*wallpad.js
 		fi
-        cp /$MODEL"_"$TYPE".js" $SHARE_DIR/$JS_FILE
+        cp /js/$MODEL"_"$TYPE".js" $SHARE_DIR/$JS_FILE
 	fi
 fi
 
