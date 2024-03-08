@@ -530,7 +530,7 @@ var thermoValue = (strValue) => {
 // HA에서 MQTT로 제어 명령 수신
 client.on('message', (topic, message) => {
   if (mqttReady) {
-    var topics = topic.split('/');
+    var topics = topic.trim().split('/');
     var value = message.toString(); // message buffer이므로 string으로 변환
     var objFound = null;
 
