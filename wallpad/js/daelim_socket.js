@@ -93,13 +93,13 @@ const CONST = {
     {
       deviceId: 'Gas',
       subId: '1',
-      stateStartWithHex: Buffer.alloc(8, '9048480000000020', 'hex'),
+      stateStartWithHex: 'F7 20 01 8B 81 01 00 00 00 00 00 00 00 2E AA'.buff(),
       power: 'OFF'
     },
     {
       deviceId: 'Gas',
       subId: '1',
-      stateStartWithHex: Buffer.alloc(8, '9040400000000010', 'hex'),
+      stateStartWithHex: 'F7 20 01 8B 81 01 01 00 00 00 00 00 00 2F AA'.buff(),
       power: 'ON'
     },
   ],
@@ -351,9 +351,16 @@ const CONST = {
     {
       deviceId: 'Gas',
       subId: '1',
-      commandHex: Buffer.alloc(8, '1101800000000092', 'hex'),
-      ackHex: Buffer.alloc(8, '9148480000000021', 'hex'),
+      commandHex: 'F7 20 8B 01 12 00 00 00 00 00 00 00 00 BE AA'.buff(),
+      ackHex: '20018B9F',
       power: 'OFF'
+    },
+    {
+      deviceId: 'Gas',
+      subId: '1',
+      commandHex: 'F7 20 8B 01 12 01 00 00 00 00 00 00 00 BF AA'.buff(),
+      ackHex: '20018B9F',
+      power: 'ON'
     },
     {
       deviceId: 'Elevator',
