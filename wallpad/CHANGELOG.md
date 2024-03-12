@@ -1,6 +1,6 @@
 ## RELEASE NOTES
 ```txt
-1.0.0b 노드 버전 고정
+1.0.0c 노드 버전 고정
 0.8.7 hyundai 월패드 js 파일 업데이트
 0.8.6 알파인 리눅스에서 python을 python3로 변경해서 설치해야 함
 0.8.3 hyundai 월패드 수정

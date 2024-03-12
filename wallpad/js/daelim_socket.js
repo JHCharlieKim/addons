@@ -64,6 +64,13 @@ const CONST = {
       power: ''
     },
     {
+      deviceId: 'Light', // Gas
+      subId: ['8'],
+      stateStartWithHex: 'f7 20 01 8B 81'.buff(),
+      whereToReadBlock: [6],
+      power: ''
+    },
+    {
       deviceId: 'Thermo',
       subId: ['1', '2', '3', '4'],
       stateStartWithHex: 'f7 20 01 4A 81'.buff(),
@@ -89,18 +96,6 @@ const CONST = {
       subId: ['2'],
       stateStartWithHex: 'f720bb01110405000000000000f6'.buff(),
       open: 'On'
-    },
-    {
-      deviceId: 'Gas',
-      subId: '1',
-      stateStartWithHex: 'F7 20 01 8B 81 01 00 00 00 00 00 00 00 2E AA'.buff(),
-      power: 'OFF'
-    },
-    {
-      deviceId: 'Gas',
-      subId: '1',
-      stateStartWithHex: 'F7 20 01 8B 81 01 01 00 00 00 00 00 00 2F AA'.buff(),
-      power: 'ON'
     },
   ],
 
@@ -253,6 +248,21 @@ const CONST = {
       commandHex: 'F7 20 24 01 11 01 00 00 00 00 00 00 00 57 AA'.buff(),
       ackHex: '2001249f'.buff()
     },
+    //가스
+    {
+      deviceId: 'Light',
+      subId: '8',
+      power: 'OFF',
+      commandHex: 'F7 20 8B 01 12 00 00 00 00 00 00 00 00 BE AA'.buff(),
+      ackHex: '20018b9f'.buff()
+    },
+    {
+      deviceId: 'Light',
+      subId: '8',
+      power: 'ON',
+      commandHex: 'F7 20 8B 01 12 01 00 00 00 00 00 00 00 BF AA'.buff(),
+      ackHex: '20018b9f'.buff()
+    },
     //온도세팅=DEC2HEX((희망온도))+128)
     //패리티 만들기=F7 ~~~~ AA 사이를 다 더하고 HEX의 뒤 두자리만 사용.
     //F7 20 44 01 11 ## 00 00 00 00 00 00 00 @@ AA (총 15블럭, ## 희망온도, @@ 패리티)
@@ -347,20 +357,6 @@ const CONST = {
       setTemp: '',
       commandHex: 'F7 20 44 01 11'.buff(),
       ackHex: '20014491'.buff()
-    },
-    {
-      deviceId: 'Gas',
-      subId: '1',
-      commandHex: 'F7 20 8B 01 12 00 00 00 00 00 00 00 00 BE AA'.buff(),
-      ackHex: '20018B9F',
-      power: 'OFF'
-    },
-    {
-      deviceId: 'Gas',
-      subId: '1',
-      commandHex: 'F7 20 8B 01 12 01 00 00 00 00 00 00 00 BF AA'.buff(),
-      ackHex: '20018B9F',
-      power: 'ON'
     },
     {
       deviceId: 'Elevator',
