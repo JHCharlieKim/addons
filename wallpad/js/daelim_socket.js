@@ -66,7 +66,7 @@ const CONST = {
     {
       deviceId: 'Light', // Gas
       subId: ['8'],
-      stateStartWithHex: 'f7 20 01 8B 81'.buff(),
+      stateStartWithHex: 'f7 20 01 11 81'.buff(),
       whereToReadBlock: [6],
       power: ''
     },
@@ -253,15 +253,8 @@ const CONST = {
       deviceId: 'Light',
       subId: '8',
       power: 'OFF',
-      commandHex: 'F7 20 8B 01 12 00 00 00 00 00 00 00 00 BE AA'.buff(),
-      ackHex: '20018b9f'.buff()
-    },
-    {
-      deviceId: 'Light',
-      subId: '8',
-      power: 'ON',
-      commandHex: 'F7 20 8B 01 12 01 00 00 00 00 00 00 00 BF AA'.buff(),
-      ackHex: '20018b9f'.buff()
+      commandHex: 'F7 20 11 01 11 00 00 00 00 00 00 00 00 43 AA'.buff(),
+      ackHex: '20011191'.buff()
     },
     //온도세팅=DEC2HEX((희망온도))+128)
     //패리티 만들기=F7 ~~~~ AA 사이를 다 더하고 HEX의 뒤 두자리만 사용.
