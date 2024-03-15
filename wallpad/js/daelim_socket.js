@@ -388,24 +388,49 @@ const client = mqtt.connect(CONST.mqttBroker, {
 client.on('connect', () => {
   client.subscribe(CONST.DEVICE_TOPIC, (err) => {
     if (err) {
-      log('MQTT Subscribe fail! -', CONST.DEVICE_TOPIC)
+      log('MQTT Subscribe fail! -', CONST.DEVICE_TOPIC);
     }
   });
+});
+
+client.on('error', (error) => {
+  log('MQTT Connection error! - ', error);
+  process.exit(1);
 });
 
 // EW11 연결 (수정필요)
 const sock = new net.Socket();
 log('Initializing: SOCKET');
-sock.connect(CONFIG.socket.port, CONFIG.socket.deviceIP, function () {
-  log('[Socket] Success connect server');
-});
+sock.connect(CONFIG.socket.port, CONFIG.socket.deviceIP,
+    () => {
+      log('[Socket] Success connect server');
+    });
 const parser = sock.pipe(new Delimiter({delimiter: [0xAA]}));
+
+sock.on('close', (hadError) => {
+  if (hadError) {
+    log('[Socket] Closed with error');
+    process.exit(1);
+  }
+});
+
+sock.on('error', (error) => {
+  log('[Socket] Error - ', error);
+  process.exit(1);
+});
+
+sock.on('end', () => {
+  log('[Socket] End');
+  process.exit(1);
+});
+
+sock.on('timeout', () => {
+  log('[Socket] Timeout');
+  sock.end();
+});
 
 //////////////////////////////////////////////////////////////////////////////////////
 parser.on('data', function (data) {
-
-  //수신 데이터 로그
-  //log('Receive interval: ', (new Date().getTime())-lastReceive, 'ms -> (',data[0],') ', data.toString('hex'));
   lastReceive = new Date().getTime();
 
 ////////// states [start]
@@ -429,17 +454,12 @@ parser.on('data', function (data) {
     queue.splice(objFoundIdx, 1);
   }
 ////////// ack [end]
-
-  //상태 정보 외의 로그
-  // log('Receive : ', (new Date().getTime())-lastReceive, 'ms -> ', data.toString('hex'));
-
 });
 
 //////////////////////////////////////////////////////////////////////////////////////
 // MQTT로 HA에 상태값 전송
 
 var updateStatus = (obj, data) => {
-
   var arrStateName = Object.keys(obj);
 
   //상태를 쏠 state 만 돌린다.
