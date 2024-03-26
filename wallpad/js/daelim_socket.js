@@ -631,3 +631,22 @@ setTimeout(() => {
   log('MQTT Ready...')
 }, CONST.mqttDelay);
 //setInterval(commandProc, 100);
+
+setInterval(() => {
+  if (sock.connecting) {
+    log('[Socket] Connecting');
+  }
+
+  if (sock.pending) {
+    log('[Socket] Pending');
+  }
+
+  if (sock.destroyed) {
+    log('[Socket] Destroyed');
+    process.exit(1);
+  }
+
+  log(`[Socket] readyState: ${sock.readyState}`);
+  log(`[Socket] bytesRead: ${sock.bytesRead}`);
+  log(`[Socket] bytesWritten: ${sock.bytesWritten}`);
+}, 5 * 60 * 1000);
