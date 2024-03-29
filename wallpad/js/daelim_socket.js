@@ -633,6 +633,8 @@ setTimeout(() => {
 //setInterval(commandProc, 100);
 
 setInterval(() => {
+  log('[Socket] Monitoring starts');
+
   if (sock.connecting) {
     log('[Socket] Connecting');
   }
@@ -646,7 +648,12 @@ setInterval(() => {
     process.exit(1);
   }
 
+  if (sock.readyState !== 'open') {
+    log('[Socket] not ready');
+    process.exit(1);
+  }
+
   log(`[Socket] readyState: ${sock.readyState}`);
   log(`[Socket] bytesRead: ${sock.bytesRead}`);
   log(`[Socket] bytesWritten: ${sock.bytesWritten}`);
-}, 5 * 60 * 1000);
+}, 60 * 1000);
