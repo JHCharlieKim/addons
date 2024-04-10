@@ -6,7 +6,7 @@ SHARE_DIR=/share
 CUSTOM_FILE=$(jq --raw-output ".customfile" $CONFIG_PATH)
 MODEL=$(jq --raw-output ".model" $CONFIG_PATH)
 TYPE=$(jq --raw-output ".type" $CONFIG_PATH)
-VERSION="1.0.1c"
+VERSION="1.0.1d"
 JS_FILE=$MODEL"_"$TYPE"_wallpad_"$VERSION".js"
 
 if [ -f $SHARE_DIR/$CUSTOM_FILE ]; then

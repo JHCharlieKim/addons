@@ -16,6 +16,8 @@ const mqtt = require('mqtt');
 
 const CONFIG = require('/data/options.json');  //**** 애드온의 옵션을 불러옵니다. 이후 CONFIG.mqtt.username 과 같이 사용가능합니다.
 
+let lastBytesRead = 0;
+
 //String to Buffer, 스페이스가 들어가도라도 공백을 다 제거하고 버퍼를 만들어냅니다.
 String.prototype.buff = function () {
   var noSpaceStr = this.replace(/\s/gi, '');
@@ -653,7 +655,12 @@ setInterval(() => {
     process.exit(1);
   }
 
-  log(`[Socket] readyState: ${sock.readyState}`);
+  if (sock.bytesRead !== 0 && sock.bytesRead === lastBytesRead) {
+    log('[Socket] No data received');
+    process.exit(1);
+  }
+
+  log(`[Socket] lastBytesRead: ${lastBytesRead}`);
   log(`[Socket] bytesRead: ${sock.bytesRead}`);
-  log(`[Socket] bytesWritten: ${sock.bytesWritten}`);
+  lastBytesRead = sock.bytesRead;
 }, 60 * 1000);
