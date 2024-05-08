@@ -1,6 +1,6 @@
 {
   "name": "addons",
-  "version": "1.0.1d",
+  "version": "1.0.1e",
   "devDependencies": {
     "mqtt": "^4.2.8",
     "serialport": "^9.2.8"

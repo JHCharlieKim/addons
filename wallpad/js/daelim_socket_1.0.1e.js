@@ -115,6 +115,14 @@ const CONST = {
       deviceId: 'Light',
       subId: '1',
       power: 'ON',
+      brightness: '8',
+      commandHex: 'F7 20 21 01 11 0A 00 00 00 00 00 00 00 5D AA'.buff(),
+      ackHex: '2001219f'.buff()
+    },
+    {
+      deviceId: 'Light',
+      subId: '1',
+      power: 'ON',
       brightness: '1',
       commandHex: 'F7 20 21 01 11 01 00 00 00 00 00 00 00 54 AA'.buff(),
       ackHex: '2001219f'.buff()
@@ -165,14 +173,6 @@ const CONST = {
       power: 'ON',
       brightness: '7',
       commandHex: 'F7 20 21 01 11 07 00 00 00 00 00 00 00 5A AA'.buff(),
-      ackHex: '2001219f'.buff()
-    },
-    {
-      deviceId: 'Light',
-      subId: '1',
-      power: 'ON',
-      brightness: '8',
-      commandHex: 'F7 20 21 01 11 0A 00 00 00 00 00 00 00 5D AA'.buff(),
       ackHex: '2001219f'.buff()
     },
     //복도
